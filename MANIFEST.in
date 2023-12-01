@@ -1,0 +1,6 @@
+include iotbr/IBGE/nivel_12_2000_2020_xls/*.xls
+include iotbr/IBGE/nivel_20_2010_2020_xls/*.xls
+include iotbr/IBGE/nivel_51_2000_2020_xls/*.xls
+include iotbr/IBGE/nivel_68_2010_2020_xls/*.xls
+include iotbr/IBGE/dictionary_1.csv
+
