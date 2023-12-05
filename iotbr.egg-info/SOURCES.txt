@@ -4,6 +4,7 @@ README.md
 pyproject.toml
 setup.cfg
 iotbr/__init__.py
+iotbr/deflate.py
 iotbr/io_system.py
 iotbr/tru.py
 iotbr/tru_pb.py

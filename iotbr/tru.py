@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from . import deflate as deflate
 
 from importlib import resources
 import io
@@ -169,3 +170,28 @@ def read_var(year='2019',level='68',var='PT',unit='t'):
     else:
         var_ = read_va(year,level,var,unit)
     return var_
+ 
+
+def read_vars(year='2019',level='68',vars_=['PT'],unit='t'):
+    # read multiple variables and concatenate them as a single dataframe
+    #example: vars_ = ['OT_pm','MG_com','MG_tra','I_imp','IPI','ICMS','OI_liq_Sub','TI_liq_sub','OT_pb']
+    if isinstance(vars_, str):
+    	vars_ = [vars_]
+    vars_df = [read_var(year,level,i,unit) for i in vars_]
+    vars_df = pd.concat(vars_df,axis=1)
+    return vars_df
+ 
+ 
+    
+def read_var_def(year='2019',level='68',var='PT',unit='t',reference_year='2011'):
+    # var_pc = variável a preços correntes
+    # def_ = dataframe com deflatores
+    # var_def = variável a preços deflacionados
+    # reference_year = ono base do deflacionamento
+    
+    var_pc = read_var(year,level,var,unit)
+    def_ = deflate.deflators_df(reference_year)
+    var_def = var_pc / def_[def_['year']==year]['def_cum_pro'].values[0]
+    return var_def 
+
+
