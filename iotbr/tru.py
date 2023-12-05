@@ -187,7 +187,7 @@ def read_var_def(year='2019',level='68',var='PT',unit='t',reference_year='2011')
     # var_pc = variável a preços correntes
     # def_ = dataframe com deflatores
     # var_def = variável a preços deflacionados
-    # reference_year = ono base do deflacionamento
+    # reference_year = base_year = ono base do deflacionamento
     
     var_pc = read_var(year,level,var,unit)
     def_ = deflate.deflators_df(reference_year)
