@@ -1,0 +1,106 @@
+Metadata-Version: 2.4
+Name: iotbr
+Version: 0.1.0
+Summary: Import data from Table of Input-Output from IBGE
+Home-page: https://github.com/fms-1988
+Author: Felipe Morelli Da Silva
+Author-email: fms.morelli@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: xlrd
+Dynamic: license-file
+
+# iotbr
+
+Ferramentas para análise das Tabelas de Recursos e Usos (TRU), estimação de Tabelas Insumo-Produto (MIP), deflação de séries temporais e simulação de choques estruturais com base nas Contas Nacionais do IBGE.
+
+---
+
+## Visão geral
+
+`iotbr` é um pacote Python voltado à manipulação e análise de dados das Tabelas de Recursos e Usos (TRU) do IBGE. Ele oferece funcionalidades para:
+
+1. **Leitura, retomada e análise dos dados da TRU**, facilitando o entendimento da estrutura produtiva brasileira;
+2. **Estimação de Tabelas Insumo-Produto (MIP)** a partir das TRU, com base na metodologia de Guilhoto (2010);
+3. **Deflação de séries temporais** com base em índices de preços adequados;
+4. **Simulação e análise de choques estruturais**, como variações exógenas na demanda final, permitindo calcular multiplicadores econômicos.
+
+---
+
+## Instalação
+
+```bash
+pip install iotbr
+```
+
+---
+
+## Exemplos de uso
+
+
+* [1\_tru\_analysis.ipynb](exemplos/1_variaveis_tru.ipynb) – leitura e estruturação dos dados da TRU;
+* [2\_mip\_estimation.ipynb](exemplos/2_estimar_mip.ipynb) – estimação das Tabelas MIP;
+* [3\_shock\_analysis.ipynb](exemplos/3_simular_choques.ipynb) – simulação de choques e cálculo de multiplicadores.
+
+---
+
+## Exemplos de choques que podem ser simulados
+
+* Aumento de 10% no consumo das famílias;
+* Variação exógena da demanda final (modelo aberto);
+* Variação da demanda com realimentação endógena (modelo fechado);
+* Cálculo de **multiplicadores de produção**, **emprego** e **renda do trabalho**.
+
+Esses recursos permitem estimar os impactos diretos, indiretos e induzidos de choques sobre a economia setorial.
+
+---
+
+
+## Variáveis que o pkg iotbr reconhece dentro da tru
+- níveis 20 e 68 so tem dados a partir de 2010
+
+- a TRU51 apresenta os dados de exportação na forma agregada (X_bens + X_serv = X_bens_serv)
+
+- a TRU12 apresentava os dados de exportação na forma desagregada até 2010 (X_bens_serv = X_bens + X_serv). A partir de 2010 passa a apresenta-los de forma agregada (X_bens_serv).
+
+- a TRU51 apresentava os dados de importação na forma desagregada até 2010 (M_bens_serv = CIF_FOB + M_bens + M_serv). A partir de 2010 passa a apresenta-los de forma agregada (M_bens_serv).
+
+- a TRU12 apresentava os dados de importação na forma desagregada até 2010 (M_bens_serv = CIF_FOB + M_bens + M_serv). A partir de 2010 passa a apresenta-los de forma agregada (M_bens_serv).
+
+- **Resumindo**: Variáveis que só estão disponíveis para os níveis 20 e 51 (disponíveis até 2010): CIF_FOB, M_bens, M_serv, X_bens, X_serv
+
+
+| var           | sheet       | type   | description                                                                 |
+|---------------|-------------|--------|-----------------------------------------------------------------------------|
+| OT_pm         | oferta      | vector | Oferta total a preço de consumidor                                         |
+| MG_com        | oferta      | vector | Margem de comércio                                                          |
+| MG_tra        | oferta      | vector | Margem de transporte                                                        |
+| I_imp         | oferta      | vector | Imposto de importação                                                       |
+| IPI           | oferta      | vector | IPI                                                                         |
+| ICMS          | oferta      | vector | ICMS                                                                        |
+| OI_liq_Sub    | oferta      | vector | Outros impostos menos subsídios                                            |
+| TI_liq_sub    | oferta      | vector | Total de impostos líquidos de subsídios                                    |
+| OT_pb         | oferta      | vector | Oferta total a preço básico                                                 |
+| P_matrix      | producao    | matrix | Produção das atividades                                                     |
+| PT            | producao    | vector | Total do produto                                                            |
+| CIF_FOB       | importacao  | vector | Ajuste CIF/FOB                                                              |
+| M_bens        | importacao  | vector | Importação de bens                                                          |
+| M_serv        | importacao  | vector | Importação de serviços                                                      |
+| CI_matrix     | CI          | matrix | Consumo intermediário das atividades                                        |
+| D_ci          | CI          | vector | Total do produto (Tabela 2 CI)                                              |
+| X_bens        | demanda     | vector | Exportação de bens                                                          |
+| X_serv        | demanda     | vector | Exportação de serviços                                                      |
+| C_g           | demanda     | vector | Consumo da administração pública                                            |
+| C_ong         | demanda     | vector | Consumo das ISFLSF                                                          |
+| C_f           | demanda     | vector | Consumo das famílias                                                        |
+| FBKF          | demanda     | vector | Formação bruta de capital fixo                                              |
+| DE            | demanda     | vector | Variação de estoque                                                         |
+| D_final       | demanda     | vector | Demanda final                                                               |
+| D_total       | demanda     | vector | Demanda total                                                               |
+| VA_table      | VA          | table  | Componentes do valor adicionado                                             |
+| M_bens_serv   | importacao  | vector | (1) Importação de bens e serviços líquida de ajuste CIF/FOB                |
+| X_bens_serv   | demanda     | vector | (1) Exportação de bens e serviços líquida de ajuste CIF/FOB                |
