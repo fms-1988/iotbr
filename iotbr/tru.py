@@ -11,16 +11,21 @@ with resources.open_binary('iotbr.IBGE', 'dictionary_1.csv') as f:
     bytes_io = io.BytesIO(data)
 dic = pd.read_csv(bytes_io)
 
+with resources.open_binary('iotbr.IBGE', 'variables_description.csv') as f:
+    data = f.read()
+    bytes_io = io.BytesIO(data)
+var_descriptions = pd.read_csv(bytes_io)
+
 
 def file_path(level):
     if level =='12':
-        path_ = 'iotbr.IBGE.nivel_12_2000_2020_xls'
+        path_ = 'iotbr.IBGE.nivel_12_2000_2021_xls'
     elif level =='20':
-        path_ = 'iotbr.IBGE.nivel_20_2010_2020_xls'
+        path_ = 'iotbr.IBGE.nivel_20_2010_2021_xls'
     elif level =='51':
-        path_ = 'iotbr.IBGE.nivel_51_2000_2020_xls'
+        path_ = 'iotbr.IBGE.nivel_51_2000_2021_xls'
     else:
-        path_ = 'iotbr.IBGE.nivel_68_2010_2020_xls'
+        path_ = 'iotbr.IBGE.nivel_68_2010_2021_xls'
     return path_
 
 def var_y_index(level):
@@ -140,7 +145,7 @@ def read_matrix(year,level,var,unit):
     matrix_ = pd.DataFrame(matrix_)
     matrix_ = matrix_.set_index(y_index)
     matrix_.index.name = 'produtos'
-    matrix_ = matrix_.rename(columns={matrix_.columns[i]:x_index[i] for i in  range(int(level))})
+    matrix_ = matrix_.rename(columns={matrix_.columns[i]:x_index.iloc[i] for i in  range(int(level))})
     return matrix_
 
 
@@ -156,7 +161,7 @@ def read_va(year,level,var,unit):
     matrix_ = pd.DataFrame(matrix_)
     matrix_ = matrix_.set_index(y_index)
     matrix_.index.name = 'setor'
-    matrix_ = matrix_.rename(columns={matrix_.columns[i]:x_index[i] for i in  range(int(level))})
+    matrix_ = matrix_.rename(columns={matrix_.columns[i]:x_index.iloc[i] for i in  range(int(level))})
     matrix_ = matrix_.transpose()
     return matrix_
 

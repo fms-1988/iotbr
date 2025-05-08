@@ -1,0 +1,29 @@
+,var,sheet,type,description,tru12_shape,tru20_shape,tru51_shape,tru68_shape
+0,OT_pm,oferta,vector,Oferta total a preço de consumidor,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+1,MG_com,oferta,vector,Margem de comércio ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+2,MG_tra,oferta,vector,Margem de transporte,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+3,I_imp,oferta,vector,Imposto de importação ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+4,IPI,oferta,vector,IPI ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+5,ICMS,oferta,vector,ICMS,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+6,OI_liq_Sub,oferta,vector,Outros impostos menos subsídios,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+7,TI_liq_sub,oferta,vector,Total de impostos líquidos de subsídios,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+8,OT_pb,oferta,vector,Oferta total a preço básico ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+9,P_matrix,producao,matrix,Produção das atividades,"(12, 12)","(20, 20)","(107, 51)","(128, 68)"
+10,PT,producao,vector,Total do produto,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+11,CIF_FOB,importacao,vector,Ajuste CIF/FOB,"(12, 1) (disponível até 2010)",-,"(107, 1) (disponível até 2010)",-
+12,M_bens,importacao,vector,Importação de bens ,"(12, 1) (disponível até 2010)",-,"(107, 1) (disponível até 2010)",-
+13,M_serv,importacao,vector,Importação de serviços,"(12, 1) (disponível até 2010)",-,"(107, 1) (disponível até 2010)",-
+14,CI_matrix,CI,matrix,Consumo intermediário das atividades ,"(12, 12)","(20, 20)","(107, 51)","(128, 68)"
+15,D_ci,CI,vector,Total do produto (Tabela 2 CI) ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+16,X_bens,demanda,vector,Exportação de bens ,"(12, 1) (disponível até 2010)",-,"(107, 1) (disponível até 2010)",-
+17,X_serv,demanda,vector,Exportação de serviços,"(12, 1) (disponível até 2010)",-,"(107, 1) (disponível até 2010)",-
+18,C_g,demanda,vector,Consumo da administração pública,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+19,C_ong,demanda,vector,Consumo das ISFLSF ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+20,C_f,demanda,vector,Consumo das famílias,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+21,FBKF,demanda,vector,Formação bruta de capital fixo ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+22,DE,demanda,vector,Variação de estoque,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+23,D_final,demanda,vector,Demanda final,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+24,D_total,demanda,vector,Demanda total,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+25,VA_table,VA,table,Componentes do valor adicionado,"(12, 14)","(20, 14)","(51, 12)","(68, 14)"
+26,M_bens_serv,importacao,vector,(1) Importação de bens e serviços líquida de ajuste CIF/FOB ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
+27,X_bens_serv,demanda,vector,(1) Exportação de bens e serviços líquida de ajuste CIF/FOB ,"(12, 1)","(20, 1)","(107, 1)","(128, 1)"
