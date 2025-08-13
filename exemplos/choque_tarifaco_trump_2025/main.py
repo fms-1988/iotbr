@@ -32,7 +32,8 @@ isic4_cods = dict1['isic4_cod'].unique()
 exp['chave'] = exp['Código ISIC Classe'].apply(lambda x: longest_prefix(str(x), isic4_cods) if pd.notna(x) else None)
 
 # 4.4) faz o merge de exp com dict1 usando a chave auxiliar e a coluna de código isic4 em dict1
-ext_tru = pd.merge(exp, dict1, left_on='chave', right_on='isic4_cod', how='left')
+dict1_unique = dict1.drop_duplicates(subset='isic4_cod')
+ext_tru = pd.merge(exp, dict1_unique, left_on='chave', right_on='isic4_cod', how='left')
 
 # 4.5) faltou classificar apenas o codigo isic4 8999
 # ext_tru[ext_tru['cnae2_cod'].isna()]
