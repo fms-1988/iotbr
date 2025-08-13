@@ -10,7 +10,7 @@ Este script processa dados de exportação do **Comex Stat** (MDIC) no nível de
 2. **Carrega dados de exportação** do Comex Stat.
 3. **Limpa caracteres indesejados** (`\r`) nos dados.
 4. **Reclassifica** códigos ISIC4 para TRU68 usando correspondência por prefixo mais longo.
-5. **Remove registros não classificados** (ex.: ISIC4 = 8999).
+5. **Remove registro não classificado** (ISIC4 = 8999).
 6. **Importa taxa de câmbio histórica** BRL/USD.
 7. **Converte valores FOB** de USD para BRL.
 8. **Salva o resultado final** como `dados_exportacao_classificados_em_tru68.csv`.
